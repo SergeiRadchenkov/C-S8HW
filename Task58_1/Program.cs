@@ -72,6 +72,7 @@ void Print2DArray2(int[,] array)
     int row = 0;
     while (row < array.GetLength(0))
     {
+        Console.Write("|\t");
         for (int i = 0; i < array.GetLength(1) / 2; i++)
         {
             Console.Write($"{array[row, i]}\t");
@@ -80,6 +81,7 @@ void Print2DArray2(int[,] array)
         {
             Console.Write($"{array[row, i]}\t");
         }
+        Console.Write("|");
         row++;
         Console.WriteLine();
     }
