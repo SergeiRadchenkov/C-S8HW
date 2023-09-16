@@ -32,6 +32,7 @@ void Print2DArray(int[,] array)
     int row = 0;
     while (row < array.GetLength(0))
     {
+        Console.Write("|\t");
         for (int i = 0; i < array.GetLength(1) / 2; i++)
         {
             Console.Write($"{array[row, i]}\t");
@@ -39,8 +40,9 @@ void Print2DArray(int[,] array)
         Console.Write("|\t");
         for (int i = array.GetLength(1) / 2; i < array.GetLength(1); i++)
         {
-            Console.Write($"{array[row, i]}\t");
+            Console.Write($"{array[row, i]} \t");
         }
+        Console.Write("|\t");
         row++;
         Console.WriteLine();
     }
@@ -49,22 +51,22 @@ void Print2DArray(int[,] array)
 int[,] MultiMatrix(int[,] array)
 {
     int[,] newArray = new int[array.GetLength(0), array.GetLength(1) / 2];
-    
-        for (int i = 0; i < array.GetLength(0); i++)
+
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1) / 2; j++)
         {
-            for (int j = 0; j < array.GetLength(1) / 2; j++)
+            for (int k = 0; k < array.GetLength(0); k++)
             {
-                for (int k = 0; k < array.GetLength(0); k++)
-                {
-                    newArray[i, j] += array[i, k] * array[k, j + array.GetLength(1) / 2];
-                }
+                newArray[i, j] += array[i, k] * array[k, j + array.GetLength(1) / 2];
             }
         }
+    }
     return newArray;
 }
 
 void Print2DArray2(int[,] array)
-{   
+{
     Console.WriteLine();
     Console.WriteLine("Результат сложения матриц: ");
     int row = 0;
